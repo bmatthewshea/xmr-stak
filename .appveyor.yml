@@ -31,3 +31,12 @@ test_script:
   - copy C:\xmr-stak-dep\openssl\bin\* .
   - set XMRSTAK_NOWAIT=1
   - xmr-stak.exe --help --noUAC
+
+after_build:
+  - cd c:\xmr-stak\build\bin\Release
+  - cmd: 7z a xmr-stak-windows.zip "c:\xmr-stak\build\bin\Release\*.*"
+  - cmd: dir
+
+artifacts:
+  - path: build\bin\Release\*.zip
+    name: xmr-stak
